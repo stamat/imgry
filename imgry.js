@@ -286,7 +286,7 @@ imgry.LazySpacers.prototype.getDimensions = function(elem) {
 	return [w, h];
 };
 
-imgry.LazyLoad = function(selector, callback) {
+imgry.LazyLoader = function(selector, callback) {
 	this.selector = selector ? selector : '.lazy-load';
 	this.px_ratio = window.hasOwnProperty('devicePixelRatio') ? window.devicePixelRatio : 1;
 	this.callback = callback;
@@ -294,7 +294,7 @@ imgry.LazyLoad = function(selector, callback) {
 	return this.init(this.selector);
 };
 
-imgry.LazyLoad.prototype.loadImage = function(elem) {
+imgry.LazyLoader.prototype.loadImage = function(elem) {
 	var src = elem.getAttribute('data-src');
 	var srcset = elem.getAttribute('data-srcset');
 
@@ -324,7 +324,7 @@ imgry.LazyLoad.prototype.loadImage = function(elem) {
 	}
 };
 
-imgry.LazyLoad.prototype.loadAll = function(elements) {
+imgry.LazyLoader.prototype.loadAll = function(elements) {
 	if (elements && elements.length) {
 		for (var i = 0; i < elements.length; i++) {
 			this.loadImage(elements[i]);
@@ -332,7 +332,7 @@ imgry.LazyLoad.prototype.loadAll = function(elements) {
 	}
 };
 
-imgry.LazyLoad.prototype.observe = function(entries, observer) {
+imgry.LazyLoader.prototype.observe = function(entries, observer) {
 	for (var i = 0; i < entries.length; i++) {
 		var entry = entries[i];
 
@@ -344,7 +344,7 @@ imgry.LazyLoad.prototype.observe = function(entries, observer) {
 	}
 };
 
-imgry.LazyLoad.prototype.init = function(selector) {
+imgry.LazyLoader.prototype.init = function(selector) {
 	var elements = document.querySelectorAll(selector);
 
 	if (elements && elements.length) {
@@ -367,9 +367,9 @@ imgry.LazyLoad.prototype.init = function(selector) {
 	}
 };
 
-//TODO: imgry.LazyLoad.prototype.parseSizes
+//TODO: imgry.LazyLoader.prototype.parseSizes
 
-imgry.LazyLoad.prototype.closest = function(sizes, type) {
+imgry.LazyLoader.prototype.closest = function(sizes, type) {
 	var goal = window.innerWidth * this.px_ratio;
 
 	if (type === 'ratio') {
