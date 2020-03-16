@@ -282,11 +282,12 @@ imgry.LazySpacers.prototype.getDimensions = function(elem) {
 	return [w, h];
 };
 
-imgry.LazyLoader = function(selector, callback) {
+imgry.LazyLoader = function(selector, callback, options) {
 	this.selector = selector ? selector : '.lazy-load';
 	this.px_ratio = window.hasOwnProperty('devicePixelRatio') ? window.devicePixelRatio : 1;
 	this.callback = callback;
 	this.observer = null;
+	this.options = options || {};
 
 	return this.init(this.selector);
 };
@@ -348,23 +349,37 @@ imgry.LazyLoader.prototype.observe = function(entries, observer) {
 imgry.LazyLoader.prototype.init = function(selector) {
 	var elements = document.querySelectorAll(selector);
 
-	if (elements && elements.length) {
-		if (window.hasOwnProperty('IntersectionObserver')) {
-			if (!this.hasOwnProperty('observer')) {
-				var self = this;
-				this.observer = new IntersectionObserver(function(entries, observer) {
-					self.observe(entries, observer);
-				});
-			}
+	if (window.hasOwnProperty('IntersectionObserver')) {
+		if (!this.observer) {
+			var self = this;
+			this.observer = new IntersectionObserver(function(entries, observer) {
+				self.observe(entries, observer);
+			}, this.options);
 
-			if (elements && elements.length) {
+			if (elements && elements.length && this.observer) {
 				for (var i = 0; i < elements.length; i++) {
 					this.observer.observe(elements[i]);
 				}
 			}
-		} else {
+		}
+	} else {
+		if (elements && elements.length) {
 			this.loadAll(elements);
 		}
+	}
+};
+
+imgry.LazyLoader.prototype.add = function(elements) {
+	if (!elements.hasOwnProperty('length')) {
+		elements = [elements]
+	}
+
+	if (this.observer) {
+		for (var i = 0; i < elements.length; i++) {
+			this.observer.observe(elements[i]);
+		}
+	} else {
+		this.loadAll(elements);
 	}
 };
 
