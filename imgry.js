@@ -114,7 +114,6 @@ imgry.inlineSVG = function(selector) {
 	selector = !selector ? 'img' : selector;
 
 	var elements = document.querySelectorAll(selector+':not(.not-inline)');
-	console.log(elements);
 
 	for (var i = 0; i < elements.length; i++) {
 		var elem = elements[i];
@@ -123,8 +122,6 @@ imgry.inlineSVG = function(selector) {
 			var id = elem.id;
 			var cls = elem.className;
 			var src = elem.src;
-
-			console.log(src);
 		}
 
 		if (elem.src.match(/.*\.svg$/gi)) {
@@ -144,7 +141,6 @@ imgry.inlineSVG = function(selector) {
 					}
 
 					var svgs = xmlDoc.getElementsByTagName('svg');
-					console.log(svgs, elem);
 
 					for (var i = 0; i < svgs.length; i++) {
 						var svg = svgs[i];
@@ -290,6 +286,7 @@ imgry.LazyLoader = function(selector, callback) {
 	this.selector = selector ? selector : '.lazy-load';
 	this.px_ratio = window.hasOwnProperty('devicePixelRatio') ? window.devicePixelRatio : 1;
 	this.callback = callback;
+	this.observer = null;
 
 	return this.init(this.selector);
 };
@@ -328,6 +325,10 @@ imgry.LazyLoader.prototype.loadAll = function(elements) {
 	if (elements && elements.length) {
 		for (var i = 0; i < elements.length; i++) {
 			this.loadImage(elements[i]);
+
+			if (this.observer) {
+				this.observer.unobserve(elements[i]);
+			}
 		}
 	}
 };
