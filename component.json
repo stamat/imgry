@@ -1,0 +1,24 @@
+{
+    "name": "imgry",
+    "repo": "stamat/imgry",
+    "description": "https://github.com/stamat/imgry",
+    "version": "1.0.0",
+    "keywords": [
+		"vanillajs",
+		"lazy-loading",
+        "lazy-load",
+        "images",
+        "spacer",
+        "fade-in",
+        "blur",
+		"polyfill",
+        "svg-inline"
+    ],
+    "development": {},
+    "scripts": {
+        "imgry.js": "imgry.js"
+    },
+    "styles": {
+		"imgry.css": "imgry.css"
+    }
+}

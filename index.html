@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>imgry</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/228006f19a.js" crossorigin="anonymous"></script>
+		<link href="imgry.css" rel="stylesheet">
+
+        <style>
+            html, body {
+                font-family: 'Lato', sans-serif;
+                color: #1d1d1d;
+                padding: 0px;
+                margin: 0px;
+            }
+        </style>
+        <script type="text/javascript" src="imgry.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <main>
+				<div class="lazy-image-wrap">
+					<div class="lazy-image-blured" style="background-image: url(https://picsum.photos/id/10/100/75)"></div>
+					<div class="lazy-image" data-background="true"
+						data-srcset="https://picsum.photos/id/10/800/600 800w,
+									 https://picsum.photos/id/10/1024/768 1024w"
+						data-src="https://picsum.photos/id/10/1024/768"></div>
+					<span class="lazy-spacer spacer" data-width="1024" data-height="768" data-alt="test"></span>
+
+					<noscript>
+						<img
+							srcset="https://picsum.photos/id/10/800/600 800w,
+									 https://picsum.photos/id/10/1024/768 1024w"
+							src="https://picsum.photos/id/10/1024/768" alt="" />
+					</noscript>
+
+				</div>
+				<!-- <img srcset="https://picsum.photos/id/10/800/600 800w,
+							 https://picsum.photos/id/10/1024/768 1024w"
+					 src="https://picsum.photos/id/10/1024/768" alt="" /> -->
+            </main>
+        </div>
+        <script type="text/javascript">
+			new imgry.LazySpacers('.lazy-spacer');
+            new imgry.LazyLoader('.lazy-image');
+        </script>
+    </body>
+</html>

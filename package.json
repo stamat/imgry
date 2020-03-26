@@ -1,0 +1,28 @@
+{
+  "name": "imgry",
+  "version": "1.0.0",
+  "description": "Vanilla JS library that's all about images: lazy loading, spacer generating, svg to inline, polyfills...",
+  "main": "imgry.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stamat/imgry.git"
+  },
+  "keywords": [
+	"vanillajs",
+  	"lazy-loading",
+  	"lazy-load",
+  	"images",
+  	"spacer",
+  	"fade-in",
+  	"blur",
+  	"polyfill",
+  	"svg-inline"
+  ],
+  "author": "Nikola Stamatovic <nikola.stamatovic@me.com>",
+  "contributors": [
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stamat/imgry/issues"
+  }
+}
