@@ -1,6 +1,8 @@
 # imgry v1.0.0
 Vanilla JS library that's all about images: lazy loading, spacer generating, svg to inline...
 
+**📦 ARCHIEVED:** in favor of https://github.com/stamat/lazyloaded and https://github.com/stamat/book-of-spells
+
 ## Functions
 Function | Params | Description
 -------- | ------ | -----------
